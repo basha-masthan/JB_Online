@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { z } from "zod";
-import { MapPin, Phone, MessageCircle, Send } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import { MapPin, Phone, MessageCircle, Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -24,6 +25,7 @@ const enquirySchema = z.object({
 });
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -32,7 +34,7 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = enquirySchema.safeParse(form);
     if (!result.success) {
@@ -44,20 +46,38 @@ const Contact = () => {
       return;
     }
 
-    const text = `Hi! I'd like to enquire about ${form.course}.%0A%0AName: ${encodeURIComponent(
-      form.name,
-    )}%0APhone: ${encodeURIComponent(form.phone)}%0AEmail: ${encodeURIComponent(
-      form.email,
-    )}%0AMessage: ${encodeURIComponent(form.message)}`;
+    setIsSubmitting(true);
 
-    window.open(`https://wa.me/919676623494?text=${text}`, "_blank");
+    try {
+      await emailjs.send(
+        "service_0ycgn3k", // Service ID
+        "template_drletb8", // Template ID
+        {
+          from_name: form.name,
+          reply_to: form.email,
+          phone: form.phone,
+          course: form.course,
+          message: form.message,
+        },
+        "MxXCw8AcuhjEEAYrv" // Public Key
+      );
 
-    toast({
-      title: "Enquiry ready!",
-      description: "Opening WhatsApp to send your message.",
-    });
+      toast({
+        title: "Message Sent!",
+        description: "We have received your enquiry and will contact you soon.",
+      });
 
-    setForm({ name: "", phone: "", email: "", course: "", message: "" });
+      setForm({ name: "", phone: "", email: "", course: "", message: "" });
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or reach us via WhatsApp.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -196,8 +216,16 @@ const Contact = () => {
               />
             </div>
 
-            <Button type="submit" variant="hero" size="lg" className="w-full">
-              Send Enquiry <Send className="ml-2 h-4 w-4" />
+            <Button type="submit" variant="hero" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={isSubmitting}>
+              {isSubmitting ? (
+                <>
+                  Sending... <Loader2 className="ml-2 h-4 w-4 animate-spin" />
+                </>
+              ) : (
+                <>
+                  Send Enquiry <Send className="ml-2 h-4 w-4" />
+                </>
+              )}
             </Button>
           </form>
         </div>

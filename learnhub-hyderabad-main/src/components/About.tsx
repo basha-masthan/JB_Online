@@ -34,19 +34,21 @@ const About = () => {
           </p>
         </div>
 
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
+        <div className="mt-14 grid md:grid-cols-3 gap-8">
           {features.map((f) => (
             <div
               key={f.title}
-              className="group rounded-2xl bg-gradient-card border border-border p-8 transition-smooth hover:-translate-y-2 hover:shadow-elegant"
+              className="group rounded-2xl bg-card border border-border p-8 transition-smooth hover:shadow-md hover:border-primary/20"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-hero text-primary-foreground shadow-md group-hover:shadow-glow transition-smooth">
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-secondary text-primary border border-border group-hover:bg-primary group-hover:text-primary-foreground transition-smooth">
                 <f.icon className="h-7 w-7" />
               </div>
               <h3 className="mt-6 font-display text-xl font-bold text-foreground">
                 {f.title}
               </h3>
-              <p className="mt-3 text-muted-foreground leading-relaxed">{f.desc}</p>
+              <p className="mt-3 text-muted-foreground leading-relaxed font-normal">
+                {f.desc}
+              </p>
             </div>
           ))}
         </div>

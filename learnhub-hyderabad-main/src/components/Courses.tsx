@@ -42,19 +42,17 @@ const Courses = () => {
           {courses.map((c) => (
             <div
               key={c.name}
-              className="group relative overflow-hidden rounded-2xl bg-card border border-border p-6 transition-smooth hover:-translate-y-2 hover:shadow-elegant hover:border-primary/40"
+              className="group relative overflow-hidden rounded-2xl bg-card border border-border p-6 transition-smooth hover:shadow-md hover:border-primary/30"
             >
-              <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-gradient-hero opacity-0 group-hover:opacity-10 transition-smooth" />
-
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-gradient-hero group-hover:text-primary-foreground transition-smooth">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-primary border border-border group-hover:bg-primary group-hover:text-primary-foreground transition-smooth">
                 <c.icon className="h-6 w-6" />
               </div>
-              <h3 className="mt-5 font-display text-lg font-semibold text-foreground min-h-[3.5rem]">
+              <h3 className="mt-5 font-display text-lg font-bold text-foreground min-h-[3.5rem] leading-snug">
                 {c.name}
               </h3>
-              <Button asChild variant="ghost" size="sm" className="mt-2 px-0 hover:bg-transparent hover:text-primary">
-                <a href="#contact">
-                  Enroll Now <ArrowRight className="ml-1 h-4 w-4" />
+              <Button asChild variant="ghost" size="sm" className="mt-2 px-0 text-primary font-semibold hover:bg-transparent hover:text-primary/80">
+                <a href="#contact" className="flex items-center">
+                  Enroll Now <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>
             </div>
