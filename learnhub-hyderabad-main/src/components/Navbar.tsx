@@ -3,10 +3,10 @@ import { GraduationCap, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const links = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#courses", label: "Courses" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#about", label: "About" },
+  { href: "/#courses", label: "Courses" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 const Navbar = () => {
@@ -28,7 +28,7 @@ const Navbar = () => {
       }`}
     >
       <nav className="container mx-auto flex items-center justify-between px-4 py-4">
-        <a href="#home" className="flex items-center gap-2 font-display font-bold text-xl text-primary">
+        <a href="/" className="flex items-center gap-2 font-display font-bold text-xl text-primary">
           <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm">
             <GraduationCap className="h-6 w-6" />
           </span>
