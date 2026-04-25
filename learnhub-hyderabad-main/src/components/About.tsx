@@ -5,16 +5,22 @@ const features = [
     icon: BookOpen,
     title: "Easy Way of Learning",
     desc: "Step-by-step guidance, simplified concepts, and engaging sessions that make tough subjects feel effortless.",
+    bgClass: "bg-blue-50/50 hover:bg-blue-50 border-blue-100",
+    iconClass: "bg-blue-100 text-blue-600 border-blue-200 group-hover:bg-blue-600 group-hover:text-white",
   },
   {
     icon: Heart,
     title: "Love Learning — Best Teachers",
     desc: "Friendly, experienced mentors who care about your progress and turn studying into something you actually enjoy.",
+    bgClass: "bg-rose-50/50 hover:bg-rose-50 border-rose-100",
+    iconClass: "bg-rose-100 text-rose-600 border-rose-200 group-hover:bg-rose-600 group-hover:text-white",
   },
   {
     icon: Globe,
     title: "Within Your Reach",
     desc: "An online learning platform plus home tuitions in Hyderabad — quality education wherever you are.",
+    bgClass: "bg-emerald-50/50 hover:bg-emerald-50 border-emerald-100",
+    iconClass: "bg-emerald-100 text-emerald-600 border-emerald-200 group-hover:bg-emerald-600 group-hover:text-white",
   },
 ];
 
@@ -38,9 +44,9 @@ const About = () => {
           {features.map((f) => (
             <div
               key={f.title}
-              className="group rounded-2xl bg-card border border-border p-8 transition-smooth hover:shadow-md hover:border-primary/20"
+              className={`group rounded-2xl border p-8 transition-smooth shadow-sm hover:shadow-md ${f.bgClass}`}
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-secondary text-primary border border-border group-hover:bg-primary group-hover:text-primary-foreground transition-smooth">
+              <div className={`flex h-14 w-14 items-center justify-center rounded-xl border group-hover:text-white transition-smooth ${f.iconClass}`}>
                 <f.icon className="h-7 w-7" />
               </div>
               <h3 className="mt-6 font-display text-xl font-bold text-foreground">

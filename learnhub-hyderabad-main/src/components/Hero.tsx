@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-gradient-soft pt-32 pb-20 md:pt-40 md:pb-28"
+      className="relative overflow-hidden bg-gradient-soft bg-tech-light pt-32 pb-20 md:pt-40 md:pb-28"
     >
       <div className="container relative mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
         <div className="animate-fade-in-up">

@@ -97,7 +97,7 @@ const Contact = () => {
 
         <div className="mt-14 grid lg:grid-cols-5 gap-8">
           <div className="lg:col-span-2 space-y-6">
-            <div className="rounded-2xl bg-gradient-hero p-8 text-primary-foreground shadow-elegant">
+            <div className="rounded-2xl bg-gradient-hero bg-blueprint p-8 text-primary-foreground shadow-elegant">
               <h3 className="font-display text-2xl font-bold">Visit Our Institute</h3>
               <p className="mt-2 text-primary-foreground/85">
                 We're happy to welcome you in person.
