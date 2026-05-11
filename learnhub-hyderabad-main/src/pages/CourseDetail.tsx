@@ -14,6 +14,17 @@ const CourseDetail = () => {
   useEffect(() => {
     if (course) {
       document.title = course.seoTitle;
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute("content", course.seoDescription);
+      }
+      
+      const metaOgTitle = document.querySelector('meta[property="og:title"]');
+      if (metaOgTitle) metaOgTitle.setAttribute("content", course.seoTitle);
+      
+      const metaOgDesc = document.querySelector('meta[property="og:description"]');
+      if (metaOgDesc) metaOgDesc.setAttribute("content", course.seoDescription);
+
       // Scroll to top on navigation
       window.scrollTo(0, 0);
     }
@@ -129,6 +140,18 @@ const CourseDetail = () => {
 
       <Footer />
       <WhatsAppButton />
+      
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": course.name,
+        "description": course.description,
+        "provider": {
+          "@type": "EducationalOrganization",
+          "name": "JB Online Tuitions",
+          "sameAs": "https://www.jbonlinetuitions.in/"
+        }
+      }) }} />
     </div>
   );
 };

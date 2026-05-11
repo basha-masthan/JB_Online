@@ -105,6 +105,26 @@ const BlogDetail = () => {
 
       <Footer />
       <WhatsAppButton />
+      
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": blog.title,
+        "description": blog.seoDescription,
+        "author": {
+          "@type": "Organization",
+          "name": blog.author
+        },
+        "datePublished": new Date(blog.date).toISOString(),
+        "publisher": {
+          "@type": "Organization",
+          "name": "JB Online Tuitions",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.jbonlinetuitions.in/img.png"
+          }
+        }
+      }) }} />
     </div>
   );
 };
